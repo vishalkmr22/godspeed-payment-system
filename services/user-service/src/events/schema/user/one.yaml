@@ -1,0 +1,18 @@
+# ONE
+http.get./schema/user/{id}:
+  summary: Fetch User
+  description: Fetch User from database
+  fn: com.biz.schema.user.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+

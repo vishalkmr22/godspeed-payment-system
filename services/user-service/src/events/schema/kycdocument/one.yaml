@@ -1,0 +1,18 @@
+# ONE
+http.get./schema/kycdocument/{id}:
+  summary: Fetch KYCDocument
+  description: Fetch KYCDocument from database
+  fn: com.biz.schema.kycdocument.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+

@@ -1,0 +1,23 @@
+# UPDATE
+http.put./schema/organization/{id}:
+  summary: Update a Organization
+  description: Update Organization from database
+  fn: com.biz.schema.organization.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/schema/Organization'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      content:
+        application/json:
+          schema:
+            type: object
+

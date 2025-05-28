@@ -1,0 +1,5 @@
+summary: Fetch many Organization
+tasks:
+  - id: schema_organization_search
+    fn: datasource.schema.Organization.findMany
+    args: {}

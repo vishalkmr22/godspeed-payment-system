@@ -1,0 +1,54 @@
+User:
+  type: object
+  properties:
+    email:
+      type: string
+    passwordHash:
+      type: string
+    status:
+      type: string
+      default: PENDING
+      enum:
+        - PENDING
+        - ACTIVE
+        - SUSPENDED
+        - DEACTIVATED
+    role:
+      type: array
+      enum:
+        - MERCHANT
+        - DEVELOPER
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+Organization:
+  type: object
+  properties:
+    name:
+      type: string
+    userId:
+      type: string
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+KYCDocument:
+  type: object
+  properties:
+    userId:
+      type: string
+    type:
+      type: string
+    url:
+      type: string
+    verified:
+      type: boolean
+      default: false
+    uploadedAt:
+      type: string
+      format: date-time

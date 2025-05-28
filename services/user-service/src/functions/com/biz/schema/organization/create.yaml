@@ -1,0 +1,6 @@
+summary: Create Organization
+tasks:
+  - id: schema_organization_create
+    fn: datasource.schema.Organization.create
+    args:
+      data: <% inputs.body %>

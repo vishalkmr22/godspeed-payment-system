@@ -1,0 +1,17 @@
+# CREATE
+http.post./schema/organization:
+  summary: Create a new Organization
+  description: Create Organization from database
+  fn: com.biz.schema.organization.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/schema/Organization'
+  responses:
+    '201':
+      content:
+        application/json:
+          schema:
+            type: object
+

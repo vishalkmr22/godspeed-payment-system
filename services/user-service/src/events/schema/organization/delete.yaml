@@ -1,0 +1,18 @@
+# DELETE
+http.delete./schema/organization/{id}:
+  summary: Delete a Organization
+  description: Delete Organization from database
+  fn: com.biz.schema.organization.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '202':
+      content:
+        application/json:
+          schema:
+            type: object
+

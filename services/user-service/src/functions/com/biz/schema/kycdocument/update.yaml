@@ -1,0 +1,8 @@
+summary: Update KYCDocument
+tasks:
+  - id: schema_kycdocument_update
+    fn: datasource.schema.KYCDocument.update
+    args:
+      where:
+        id: <% inputs.params.id %>
+      data: <% inputs.body %>

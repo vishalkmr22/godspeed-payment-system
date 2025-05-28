@@ -1,8 +1,8 @@
-import { GSCloudEvent, GSContext, GSStatus, PlainObject } from "@godspeedsystems/core";
+import { GSContext, GSStatus, PlainObject } from "@godspeedsystems/core";
 import crypto from "crypto";
 
 /**
- * Hash the password with a new salt using pbkdf2.
+ * Hash the password using pbkdf2 with salt.
  * Format: salt:hash
  */
 const hashPassword = (password: string): Promise<string> => {
@@ -15,7 +15,7 @@ const hashPassword = (password: string): Promise<string> => {
   });
 };
 
-export default async function registerUser(ctx: GSContext, args: PlainObject) {
+export default async function registerUser(ctx: GSContext) {
   const {
     inputs: {
       data: { body },
@@ -24,7 +24,7 @@ export default async function registerUser(ctx: GSContext, args: PlainObject) {
     datasources,
   } = ctx;
 
-  const { email, password, role } = body;
+  const { email, password, role } = ctx.inputs.data.body;
 
   if (!email || !password || !role) {
     return new GSStatus(false, 400, "Missing required fields", {
@@ -34,33 +34,29 @@ export default async function registerUser(ctx: GSContext, args: PlainObject) {
 
   const passwordHash = await hashPassword(password);
 
-  // 🔒 Placeholder: This is where you’ll call user-service via Axios
-  // Example:
-  // const response = await datasources.axios.execute(ctx, {
-  //   method: 'POST',
-  //   url: 'http://user-service.localhost:4001/user',
-  //   data: { organizationName, userEmail: email }
-  // });
+  // Send the user data to user-service via Axios datasource
+  const axiosResponse = await datasources.userService.execute(ctx, {
+    method: "POST",
+    url: "/user", 
+    data: {
+      email,
+      passwordHash,
+      role,
+    },
+  });
 
-  // 🔒 Placeholder: You will also create a user in your auth DB here (commented for now)
-  // const user = await datasources.postgres.client.user.create({
-  //   data: {
-  //     email,
-  //     passwordHash,
-  //     role: ["MERCHANT"],
-  //     organizations: {
-  //       create: {
-  //         name: organizationName,
-  //       },
-  //     },
-  //   },
-  // });
+  logger.info("User registered via auth-service");
 
-  logger.info("Simulated user registration");
-  return new GSStatus(true, 201, "User registered (test mode)", {
-    email,
-    passwordHash,
-    role,
-    note: "No database write. Axios call commented for testing.",
+  if (!axiosResponse.data) {
+    return new GSStatus(false, 500, "Failed to register user", {
+      message: "userService did not return data",
+    });
+  }
+  const { data: userServiceData } = axiosResponse;
+  return new GSStatus(true, 201, "User registered successfully", {
+    userId: userServiceData.userId,
+    email: userServiceData.email,
+    role: userServiceData.role,
+    status: userServiceData.status,
   });
 }

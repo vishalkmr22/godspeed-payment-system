@@ -34,12 +34,14 @@
 //     process.exit(1);
 //   }
 // };
-module.exports = function (dsConfig: any, ctx: any) {
+import { GSContext, PlainObject } from "@godspeedsystems/core";
+
+export default function authWorkflow(dsConfig: PlainObject, ctx: GSContext) {
     // Note: dsCOnfig is type PlainObject and ctx is type GSContext
     // When creating proper function you will import them from @godspeedsystems/core
     // Check the commented code above
     return {
         'X-AUTH-TOKEN': 'response_from_auth_endpoint',
         'X-AUTH-KEY': 'response_from_auth_endpoint'
-    }
+    };
 }

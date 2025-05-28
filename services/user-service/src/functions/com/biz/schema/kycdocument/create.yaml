@@ -1,0 +1,6 @@
+summary: Create KYCDocument
+tasks:
+  - id: schema_kycdocument_create
+    fn: datasource.schema.KYCDocument.create
+    args:
+      data: <% inputs.body %>

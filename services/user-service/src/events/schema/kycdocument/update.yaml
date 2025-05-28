@@ -1,0 +1,23 @@
+# UPDATE
+http.put./schema/kycdocument/{id}:
+  summary: Update a KYCDocument
+  description: Update KYCDocument from database
+  fn: com.biz.schema.kycdocument.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/schema/KYCDocument'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      content:
+        application/json:
+          schema:
+            type: object
+

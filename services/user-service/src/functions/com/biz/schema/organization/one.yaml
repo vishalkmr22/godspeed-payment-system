@@ -1,0 +1,7 @@
+summary: Fetch Organization
+tasks:
+  - id: schema_organization_one
+    fn: datasource.schema.Organization.findUnique
+    args:
+      where:
+        id: <% inputs.params.id %>

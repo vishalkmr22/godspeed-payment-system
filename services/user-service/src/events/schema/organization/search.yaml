@@ -1,0 +1,17 @@
+# SEARCH
+http.post./schema/organization/search:
+  summary: Fetch multiple Organization
+  description: Fetch multiple Organization from database
+  fn: com.biz.schema.organization.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: array
+

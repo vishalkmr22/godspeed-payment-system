@@ -1,0 +1,17 @@
+# SEARCH
+http.post./schema/kycdocument/search:
+  summary: Fetch multiple KYCDocument
+  description: Fetch multiple KYCDocument from database
+  fn: com.biz.schema.kycdocument.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: array
+

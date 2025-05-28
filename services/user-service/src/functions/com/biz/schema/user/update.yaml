@@ -1,0 +1,8 @@
+summary: Update User
+tasks:
+  - id: schema_user_update
+    fn: datasource.schema.User.update
+    args:
+      where:
+        id: <% inputs.params.id %>
+      data: <% inputs.body %>

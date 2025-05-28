@@ -11,7 +11,7 @@
 		"dev:default": "nodemon --watch src -e ts,js,yaml,json -r dotenv ./src/index.ts",
 		"build": "run-script-os",
 		"build:win32": " (if exist dist rmdir /s /q dist) && mkdir dist && npx swc src -d dist --strip-leading-paths && copyfiles -a -u 1 \"src/**/*.!(ts)\" dist && copyfiles -a \"config/**/*\" dist && copyfiles -a -u 2 \"src/mappings/**/*\" \"dist/mappings\" && if exist README.md copy README.md dist\\ && copy tsconfig.json dist\\",
-		"build:darwin:linux": "rm -rf dist && mkdir -p dist && npx swc src -d dist --strip-leading-paths && rsync -a --exclude '*.ts' ./src/ ./dist/ && rsync -a ./config/ ./dist/config/ && rsync -a --remove-source-files ./src/mappings/ ./dist/mappings/ && [ -f README.md ] && cp README.md ./dist/ || true && cp tsconfig.json ./dist/",
+		"build:darwin:linux": "rm -rf dist && mkdir -p dist && mkdir -p src/mappings && npx swc src -d dist --strip-leading-paths && rsync -a --exclude '*.ts' ./src/ ./dist/ && rsync -a ./config/ ./dist/config/ && rsync -a --remove-source-files ./src/mappings/ ./dist/mappings/ && [ -f README.md ] && cp README.md ./dist/ || true && cp tsconfig.json ./dist/",
 		"build:default": "swc src -d dist && rsync -a --exclude '*.ts' ./src/ ./dist/ && rsync -a ./config/ ./dist/config && rsync -a ./src/mappings/ ./dist/mappings",
 		"preview": "run-script-os",
 		"preview:win32": "node dist\\index.js",

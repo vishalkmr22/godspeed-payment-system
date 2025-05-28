@@ -1,0 +1,6 @@
+summary: Create User
+tasks:
+  - id: schema_user_create
+    fn: datasource.schema.User.create
+    args:
+      data: <% inputs.body %>

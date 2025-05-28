@@ -1,0 +1,5 @@
+summary: Fetch many User
+tasks:
+  - id: schema_user_search
+    fn: datasource.schema.User.findMany
+    args: {}

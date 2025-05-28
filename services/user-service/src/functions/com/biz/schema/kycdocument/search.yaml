@@ -1,0 +1,5 @@
+summary: Fetch many KYCDocument
+tasks:
+  - id: schema_kycdocument_search
+    fn: datasource.schema.KYCDocument.findMany
+    args: {}

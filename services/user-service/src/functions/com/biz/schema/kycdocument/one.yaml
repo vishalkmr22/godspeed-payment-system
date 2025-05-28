@@ -1,0 +1,7 @@
+summary: Fetch KYCDocument
+tasks:
+  - id: schema_kycdocument_one
+    fn: datasource.schema.KYCDocument.findUnique
+    args:
+      where:
+        id: <% inputs.params.id %>

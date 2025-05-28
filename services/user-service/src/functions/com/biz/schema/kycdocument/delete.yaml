@@ -1,0 +1,7 @@
+summary: Delete KYCDocument
+tasks:
+  - id: schema_kycdocument_delete
+    fn: datasource.schema.KYCDocument.delete
+    args:
+      where:
+        id: <% inputs.params.id %>

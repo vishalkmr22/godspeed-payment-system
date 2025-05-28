@@ -1,2 +1,3 @@
-import { DataSource } from "@godspeedsystems/plugins-axios-as-datasource";
+import { DataSource } from '@godspeedsystems/plugins-axios-as-datasource';
 export default DataSource;
+                    

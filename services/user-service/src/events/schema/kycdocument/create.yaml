@@ -1,0 +1,17 @@
+# CREATE
+http.post./schema/kycdocument:
+  summary: Create a new KYCDocument
+  description: Create KYCDocument from database
+  fn: com.biz.schema.kycdocument.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/schema/KYCDocument'
+  responses:
+    '201':
+      content:
+        application/json:
+          schema:
+            type: object
+

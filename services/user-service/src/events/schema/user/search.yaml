@@ -1,0 +1,17 @@
+# SEARCH
+http.post./schema/user/search:
+  summary: Fetch multiple User
+  description: Fetch multiple User from database
+  fn: com.biz.schema.user.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: array
+

@@ -1,0 +1,18 @@
+# DELETE
+http.delete./schema/kycdocument/{id}:
+  summary: Delete a KYCDocument
+  description: Delete KYCDocument from database
+  fn: com.biz.schema.kycdocument.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '202':
+      content:
+        application/json:
+          schema:
+            type: object
+

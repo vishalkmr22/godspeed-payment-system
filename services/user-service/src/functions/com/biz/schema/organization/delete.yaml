@@ -1,0 +1,7 @@
+summary: Delete Organization
+tasks:
+  - id: schema_organization_delete
+    fn: datasource.schema.Organization.delete
+    args:
+      where:
+        id: <% inputs.params.id %>

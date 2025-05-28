@@ -1,5 +1,5 @@
 type: express  # Defines the type of event source (Express.js HTTP server)
-port: 3000     # The port on which the HTTP service runs
+port: 3002    # The port on which the HTTP service runs
 
 # Base URL for the HTTP service (Uncomment to enable), All API endpoints will be prefixed with this URL
 # base_url: /api/v1 
@@ -8,7 +8,7 @@ port: 3000     # The port on which the HTTP service runs
 docs:
   endpoint: /api-docs   # the url on which the service will start
   info:   # info object as per swagger 3.0 spec
-    title: Sample Helloworld App
+    title: User-service
     version: 1.1.0
     summary: Some http calls
     description: Lets play with Godspeed
@@ -20,9 +20,9 @@ docs:
       name: Apache 2.0
       url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
   servers:
-    - url: 'http://localhost:3000'
+    - url: 'http://localhost:3002'
       description: Public API server
-    - url: 'http://localhost:3001'
+    - url: 'http://localhost:4002'
       description: Internal API server
 
 request_body_limit: 20000   # set maximum size of the request body in bytes
