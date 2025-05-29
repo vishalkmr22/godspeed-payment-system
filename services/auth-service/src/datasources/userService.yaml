@@ -15,8 +15,8 @@ curlifiedLogs: true #will print the curl requests of each API hit. Useful for de
 #   refreshOn: # if not specified datasource token is refreshed on 401 code by default
 #     statusCode: [401, 403]
 
-# headers: #these will be set in every API call to the datasource
-#   Content-Type: application/json
+headers: #these will be set in every API call to the datasource
+  Content-Type: application/json
 # Any additional data you keep in the config will be available 
 # in the respective datasource's GSDatasource implementation class inside `this.config`
 # data:
